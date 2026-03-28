@@ -2,6 +2,10 @@
 allowed-tools: Read, Bash, Write, Glob
 argument-hint: [patch|minor|major] [description]
 description: Create a changeset for the current changes using changeset
+license: MIT
+metadata:
+  author: ludev
+  version: "0.1.0"
 ---
 
 # Create Changeset
@@ -100,3 +104,4 @@ After creating the changeset, show:
 - The file path created
 - The bump type and summary
 - How many pending changesets exist now
+- Suggest: "When ready to release, run `/release-tag` to create the version tag"
