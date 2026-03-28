@@ -1,28 +1,34 @@
-# ludev-cc
+<p align="center">
+  <img src="https://code.ludev.me/icon-512.png" alt="Ludev" width="120" />
+</p>
 
-CLI to install Claude Code slash commands into your project.
+# Slash commands for Claude Code from Ludevdot
+
+A tiny, zero-dependency CLI that copies useful slash commands into your project's `.claude/commands/` directory. Run it once, get new commands in Claude Code immediately.
+
+## Available commands
+
+### `/changeset`
+
+Creates changesets compatible with `@changesets/cli` -- but you don't need to run the interactive CLI yourself. Claude analyzes your current changes (staged, unstaged, or recent commits), picks the right bump type (`patch`, `minor`, `major`), writes a summary in imperative mood, and drops the `.changeset/*.md` file directly. Works with npm, pnpm, yarn, and bun.
+
+More commands will show up here as they're added.
 
 ## Usage
 
-Install commands into the current project:
-
 ```bash
+# Install all commands
 npx ludev-cc
-```
 
-List available commands:
+# Install a specific command
+npx ludev-cc changeset
 
-```bash
+# See what's available
 npx ludev-cc list
 ```
 
-Or install globally:
+The CLI copies `.md` files into `.claude/commands/` and you're done.
 
-```bash
-npm i -g ludev-cc
-ludev-cc install
-```
+## License
 
-## Adding your own commands
-
-Place `.md` files in the `commands/` directory of this package. Each file becomes a slash command available in Claude Code once installed to `.claude/commands/`.
+MIT

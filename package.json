@@ -11,5 +11,9 @@
   "files": [
     "bin/",
     "commands/"
-  ]
+  ],
+  "dependencies": {
+    "@changesets/cli": "^2.30.0",
+    "human-id": "^4.1.3"
+  }
 }

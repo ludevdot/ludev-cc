@@ -24,8 +24,19 @@ function list() {
   }
 }
 
-function install() {
-  const commands = getCommands();
+function install(name) {
+  let commands = getCommands();
+
+  if (name) {
+    const file = name.endsWith(".md") ? name : `${name}.md`;
+    if (!commands.includes(file)) {
+      console.log(`Unknown command: ${name}`);
+      console.log("Run 'ludev-cc list' to see available commands.");
+      process.exit(1);
+    }
+    commands = [file];
+  }
+
   if (commands.length === 0) {
     console.log("No commands to install.");
     return;
@@ -63,17 +74,13 @@ function install() {
   );
 }
 
-const command = process.argv[2] || "install";
+const arg = process.argv[2];
 
-switch (command) {
-  case "install":
-    install();
-    break;
-  case "list":
-    list();
-    break;
-  default:
-    console.log(`Unknown command: ${command}`);
-    console.log("Usage: ludev-cc [install|list]");
-    process.exit(1);
+if (!arg || arg === "install") {
+  install();
+} else if (arg === "list") {
+  list();
+} else {
+  // Treat as a command name to install
+  install(arg);
 }
