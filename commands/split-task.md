@@ -51,6 +51,8 @@ Look at existing branches from the state above:
 
 ### 3. Split into subtasks
 
+Before splitting, **read the files that will be modified** to understand their current structure, patterns, and dependencies. Don't plan changes to code you haven't seen.
+
 Break the work into phases. Not every task needs all phases — use only what applies.
 
 | Phase | Contains |
@@ -74,6 +76,7 @@ Rules:
 - Order by dependency — phase 1 can't depend on phase 2
 - If a subtask touches 4+ files, split it
 - If the task is too small to split, just say so — don't invent artificial subtasks
+- For refactoring subtasks (extract, move, rename), be explicit: what moves to the new location, what stays in the original, and what changes in the original after the extraction
 - Use hierarchical numbering: 1.1, 1.2, 2.1, 2.2
 
 ### 4. Output

@@ -31,7 +31,10 @@ Create a version tag following the deployment convention below and optionally pu
 Before anything:
 
 - **Uncommitted changes?** → warn and suggest committing first. Don't proceed.
-- **Pending changesets?** → the version hasn't been bumped yet. Suggest running `/changeset` first, then `<pm> changeset version` to consume it. Don't tag an unbumped version.
+- **Pending changesets?** → the version hasn't been bumped yet. Offer to auto-consume them:
+  - Tell the user: "Pending changesets found. Run `<pm> changeset version` to consume them and bump the version?"
+  - If the user agrees → run `<pm> changeset version`, then commit the version bump (e.g., `git add -A && git commit -m "bump version via changesets"`) before proceeding to tag.
+  - If the user declines → don't tag an unbumped version. Suggest running `/changeset` first if they need to create new changesets.
 - **Tag already exists?** → warn and stop.
 
 ### 2. Determine tag type
@@ -65,6 +68,10 @@ After tagging, check if any workflow files react to this tag pattern:
 - Search for `tags:` triggers in workflow YAML files
 - If a workflow matches → "This tag will trigger **workflow-name**"
 - If none match → "No CI/CD workflow found for this tag pattern"
+
+Also check for platform-specific deploy triggers:
+- **Vercel**: check for `vercel.json` or `.vercel/` directory. If found → "Vercel detected — auto-deploys on push to the connected branch, not on tags. The push in step 3 will trigger a deployment."
+- **Netlify**: check for `netlify.toml`. If found → "Netlify detected — auto-deploys on push to the connected branch, not on tags. The push in step 3 will trigger a deployment."
 
 ### 5. Cross-references
 
