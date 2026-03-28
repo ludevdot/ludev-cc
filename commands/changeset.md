@@ -26,7 +26,14 @@ Create a changeset for the current changes: $ARGUMENTS
 
 Analyze the current changes (staged, unstaged, or recent commits) and create a changeset.
 
-### 1. Determine bump type
+### 1. Check existing changesets
+
+Look at the pending changesets listed in Current State.
+
+- If there are already changesets covering the current changes, tell the user: "There are already N changesets pending. Review them before creating another." Show the existing changeset summaries.
+- Ask the user if they still want to create a new one. If not, STOP.
+
+### 2. Determine bump type
 
 | Type | When |
 |------|------|
@@ -36,7 +43,9 @@ Analyze the current changes (staged, unstaged, or recent commits) and create a c
 
 If the user provided a bump type in `$ARGUMENTS`, use it. Otherwise, infer from the changes.
 
-### 2. Write the changeset summary
+If `$ARGUMENTS` doesn't start with a valid bump type (`patch`, `minor`, `major`) and doesn't look like a description, warn: "Couldn't parse a bump type from arguments. Please specify patch, minor, or major."
+
+### 3. Write the changeset summary
 
 - One concise line describing **what changed and why** (user-facing perspective)
 - If multiple distinct changes, use a bullet list
@@ -57,14 +66,14 @@ Bad:
 Minor: Added new feature section for Context Monitor
 ```
 
-### 3. Create the changeset file
+### 4. Create the changeset file
 
 `changeset` is interactive, so write the file directly.
 
-Generate the filename using `human-id` (same package `@changesets/cli` uses):
+Generate the filename using `human-id` (same package `@changesets/cli` uses), with a fallback for when the package is not available:
 
 ```bash
-name=$(node -e "console.log(require('human-id').humanId())")
+name=$(node -e "try { console.log(require('human-id').humanId()) } catch(e) { console.log('changeset-' + Date.now()) }")
 ```
 
 Then write `.changeset/${name}.md`:
@@ -78,7 +87,7 @@ Then write `.changeset/${name}.md`:
 
 Where `<package-name>` is the `name` field from `package.json`.
 
-### 4. Commit Convention
+### 5. Commit Convention
 
 Follow conventional commits so the changeset aligns with git history:
 
@@ -91,14 +100,14 @@ perf: optimize image loading          # → patch
 breaking: redesign auth flow          # → major
 ```
 
-### 5. Integration with Releases
+### 6. Integration with Releases
 
 - Run `<pm> version` to consume pending changesets → bumps version + updates CHANGELOG.md
 - Tag the release and push
 - Each changeset is deleted automatically after `<pm> version`
 - Multiple changesets accumulate between releases — the highest bump wins
 
-### 6. Confirm
+### 7. Confirm
 
 After creating the changeset, show:
 - The file path created
