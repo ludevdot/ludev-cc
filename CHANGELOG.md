@@ -1,5 +1,11 @@
 # ludev-cc
 
+## 0.2.1
+
+### Patch Changes
+
+- 1b148c1: improve commands from real-world feedback: changeset validates existing changesets and bump types, split-task reads files before splitting, release-tag auto-consumes changesets and detects Vercel/Netlify, find-the-bug adds session handling and recovery commands
+
 ## 0.2.0
 
 ### Minor Changes
