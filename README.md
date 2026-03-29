@@ -24,6 +24,10 @@ Takes a task, bug report, or feature request and breaks it into atomic subtasks.
 
 Before writing new code, scans the codebase for existing functions, utils, and dependencies that already do what you need. Searches by name, location, installed packages, and git history. If [ast-grep](https://ast-grep.github.io/) (`sg`) is installed, uses AST-based structural search for more accurate results — if not, offers to install it or falls back to regex. Reports candidates with a clear recommendation: reuse, extend, refactor, or safe to create new.
 
+### `/review`
+
+Reviews your current diff (or a PR) for bugs, security issues, and code quality. Checks for OWASP top 10 vulnerabilities, race conditions, memory leaks, and more. Works with local changes, branch diffs, or PR numbers — falls back gracefully if `gh` is not available.
+
 ### `/renovate`
 
 Sets up or reviews a Renovate configuration for automated dependency updates. In setup mode, asks about your preferences interactively and generates `renovate.json` with best-practice presets. In review mode, analyzes your existing config and suggests improvements.
@@ -37,7 +41,7 @@ Creates version tags following a deployment convention: `v1.2.0-RC`, `v1.2.0-REL
 The commands connect naturally:
 
 ```
-/split-task → implement → /reuse-check → /changeset → /release-tag
+/split-task → implement → /reuse-check → /review → /changeset → /release-tag
                 ↑
           /find-the-bug (if needed)
 ```
