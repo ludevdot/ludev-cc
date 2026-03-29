@@ -12,6 +12,10 @@ A tiny, zero-dependency CLI that copies useful slash commands into your project'
 
 Creates changesets compatible with `@changesets/cli` without the interactive CLI. Claude analyzes your changes, picks the bump type, writes the summary, and drops the file. Works with npm, pnpm, yarn, and bun.
 
+### `/debug`
+
+Diagnoses and fixes bugs with a structured hypothesis-first approach. Instead of trying random fixes, Claude reads the error, investigates the code, presents ranked hypotheses, and waits for your confirmation before changing anything. One targeted fix, verified, no shotgun debugging.
+
 ### `/find-the-bug`
 
 Finds the commit that introduced a bug using `git bisect` — but you just describe the bug and Claude handles the rest. Supports automated mode (with a test command) and manual mode (Claude inspects each commit).
@@ -43,7 +47,7 @@ The commands connect naturally:
 ```
 /split-task → implement → /reuse-check → /review → /changeset → /release-tag
                 ↑
-          /find-the-bug (if needed)
+          /find-the-bug → /debug (if needed)
 ```
 
 ## Usage
