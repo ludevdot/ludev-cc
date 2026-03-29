@@ -57,6 +57,20 @@ npx ludev-cc list
 
 The CLI copies `.md` files into `.claude/commands/` and you're done.
 
+### Updating
+
+To get the latest commands, just run the install again:
+
+```bash
+npx ludev-cc@latest
+```
+
+If you installed it globally:
+
+```bash
+npm update -g ludev-cc && ludev-cc
+```
+
 ## License
 
 MIT

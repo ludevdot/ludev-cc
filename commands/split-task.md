@@ -91,9 +91,9 @@ Present the result:
 
 **Phase 1: [Name]**
 - [ ] 1.1 [What to do] — `path/to/file`
-  - Commit: `type: message`
+  - Commit: `type: summary`
 - [ ] 1.2 [What to do] — `path/to/file`
-  - Commit: `type: message`
+  - Commit: `type: summary`
 
 **Phase 2: [Name]**
 - [ ] 2.1 ...
@@ -101,6 +101,14 @@ Present the result:
 **Total**: N commits
 
 If trivial (1 commit), skip phases — just show branch name and commit message.
+
+### Commit message format
+
+All suggested commit messages must follow these rules:
+- Summary line: imperative mood ("add", not "added"), max 50 characters
+- If a body is needed, leave the second line blank, then wrap at 72 characters
+- One commit = one logical change. If a subtask has unrelated changes, split it further
+- Don't commit half-done work — each commit should compile and pass tests on its own
 
 ### 5. Next steps
 
