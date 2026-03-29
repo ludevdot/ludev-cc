@@ -45,30 +45,37 @@ The commands connect naturally:
 ## Usage
 
 ```bash
-# Install all commands
+# Interactive mode — select commands, choose target
 npx ludev-cc
 
+# Install all commands
+npx ludev-cc install
+
 # Install a specific command
-npx ludev-cc changeset
+npx ludev-cc install changeset
+
+# Install globally (~/.claude/commands/)
+npx ludev-cc install --global
 
 # See what's available
 npx ludev-cc list
-```
 
-The CLI copies `.md` files into `.claude/commands/` and you're done.
+# Remove a command
+npx ludev-cc remove changeset
+
+# Update installed commands to latest
+npx ludev-cc update
+
+# Help
+npx ludev-cc --help
+```
 
 ### Updating
 
-To get the latest commands, just run the install again:
+To get the latest commands, just run:
 
 ```bash
-npx ludev-cc@latest
-```
-
-If you installed it globally:
-
-```bash
-npm update -g ludev-cc && ludev-cc
+npx ludev-cc@latest update
 ```
 
 ## License
