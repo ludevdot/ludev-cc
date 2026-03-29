@@ -1,5 +1,11 @@
 # ludev-cc
 
+## 0.5.0
+
+### Minor Changes
+
+- f0ed1a2: add /debug command — structured hypothesis-first debugging workflow
+
 ## 0.4.0
 
 ### Minor Changes
