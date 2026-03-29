@@ -1,5 +1,12 @@
 # ludev-cc
 
+## 0.2.2
+
+### Patch Changes
+
+- 1b3f6d2: - add commit format rules to split-task and changeset commands
+  - add update instructions to README
+
 ## 0.2.1
 
 ### Patch Changes
