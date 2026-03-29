@@ -1,5 +1,11 @@
 # ludev-cc
 
+## 0.4.0
+
+### Minor Changes
+
+- 911e6a3: add /review command for code review — checks bugs, security, performance, and quality
+
 ## 0.3.0
 
 ### Minor Changes
