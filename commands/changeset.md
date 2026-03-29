@@ -100,6 +100,11 @@ perf: optimize image loading          # → patch
 breaking: redesign auth flow          # → major
 ```
 
+Commit message format:
+- Summary: imperative mood, max 50 characters (e.g. "feat: add auth middleware")
+- If a body is needed, leave the second line blank, then wrap at 72 characters
+- One commit = one logical change — don't bundle unrelated fixes
+
 ### 6. Integration with Releases
 
 - Run `<pm> version` to consume pending changesets → bumps version + updates CHANGELOG.md
